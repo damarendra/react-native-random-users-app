@@ -47,7 +47,6 @@ const reducer = handleActions(
     [
       action_creators.fetch_random_user_success,
       (state, action) => {
-
         const newState = {
           ...state,
           loading: false,
@@ -65,7 +64,8 @@ const reducer = handleActions(
         loading: false,
       })
     ]
-  ])
+  ]),
+  initialState
 );
 
 export default reducer;

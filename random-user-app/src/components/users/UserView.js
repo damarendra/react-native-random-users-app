@@ -22,9 +22,8 @@ const UserView = ({
     }}
     key={id}
     containerStyle={{
-      borderWidth: 1,
-      borderColor: colors.light_blue,
-      marginVertical: 8
+      borderWidth: 0.5,
+      borderBottomColor: colors.light_blue,
     }}
   />
 );
