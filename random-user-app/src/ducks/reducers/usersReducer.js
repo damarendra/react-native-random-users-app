@@ -6,7 +6,7 @@ import {
 
 // Initial State
 export const initialState = {
-  user: [],
+  users: [],
   loading: false
 };
 
@@ -20,14 +20,16 @@ export const action_types = {
 // Action Creators
 export const action_creators = {
   fetch_random_user: createAction(
-    action_types.FETCH_RANDOM_USER
+    action_types.FETCH_RANDOM_USER,
+    (page) => ({page})
   ),
   fetch_random_user_success: createAction(
     action_types.FETCH_RANDOM_USER_SUCCESS,
-    (user) => ({user})
+    (users) => ({users})
   ),
   fetch_random_user_failed: createAction(
-    action_types.FETCH_RANDOM_USER_FAILED
+    action_types.FETCH_RANDOM_USER_FAILED,
+    (message) => ({message})
   )
 };
 

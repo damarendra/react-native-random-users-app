@@ -3,10 +3,10 @@ import {
   combineReducers
 } from 'redux';
 
-import { default as userReducer } from './userReducer';
+import { default as usersReducer } from './usersReducer';
 
 const rootReducer = combineReducers({
-  user: userReducer
+  users: usersReducer
 });
 
 export default rootReducer;
