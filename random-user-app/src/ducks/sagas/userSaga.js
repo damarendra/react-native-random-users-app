@@ -4,7 +4,8 @@ import {
   call,
   put,
   race,
-  delay
+  delay,
+  select
 } from 'redux-saga/effects';
 
 import { fetchRandomUserApi } from './../../common/api';
@@ -12,10 +13,16 @@ import {
   action_types,
   action_creators,
 } from './../reducers/userReducer';
+import {
+  getPage
+} from './../selectors';
 
 // Worker Saga
-export function *fetchRandomUsers(action) {
-  const { page } = action.payload;
+export function *fetchRandomUsers(
+  // action
+  ) {
+  // const { page } = action.payload;
+  const page = yield select(getPage());
   const { response, timeout } = yield race({
     response: call(fetchRandomUserApi, page),
     timeout: delay(5000)

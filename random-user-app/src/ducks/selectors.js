@@ -5,6 +5,7 @@ import {
 
 const usersSelector = state => state.users.users;
 const loadingSelector = state => state.users.loading;
+const getNextPage = state => state.users.page;
 
 export const getUsers = createSelector(
   usersSelector,
@@ -14,4 +15,9 @@ export const getUsers = createSelector(
 export const isLoading = createSelector(
   loadingSelector,
   (status) => status
+);
+
+export const getPage = createSelector(
+  getNextPage,
+  (page) => page
 );

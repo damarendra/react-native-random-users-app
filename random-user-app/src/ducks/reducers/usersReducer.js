@@ -7,6 +7,7 @@ import {
 // Initial State
 export const initialState = {
   users: [],
+  page: 1,
   loading: false
 };
 
@@ -21,7 +22,7 @@ export const action_types = {
 export const action_creators = {
   fetch_random_user: createAction(
     action_types.FETCH_RANDOM_USER,
-    (page) => ({page})
+    // (page) => ({page})
   ),
   fetch_random_user_success: createAction(
     action_types.FETCH_RANDOM_USER_SUCCESS,
@@ -38,15 +39,31 @@ const reducer = handleActions(
   new Map([
     [
       action_creators.fetch_random_user,
-      (state) => (state)
+      (state) => ({
+        ...state,
+        loading: true
+      })
     ],
     [
       action_creators.fetch_random_user_success,
-      (state) => (state)
+      (state, action) => {
+
+        const newState = {
+          ...state,
+          loading: false,
+          page: state.page + 1,
+          users: state.users.concat(action.payload.users)
+        };
+
+        return newState;
+      }
     ],
     [
       action_creators.fetch_random_user_failed,
-      (state) => (state)
+      (state) => ({
+        ...state,
+        loading: false,
+      })
     ]
   ])
 );
